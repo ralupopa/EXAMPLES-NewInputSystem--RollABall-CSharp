@@ -3,6 +3,9 @@
 This project contains C# AltTester tests for a project using the New Input System.
 The tested actions are: move mouse, click, begin/move/end touch, swipe, key down/key up, press key, tilt, scroll .
 
+## Pre-requisites
+1. Install the required [.NET Framework Developer Pack](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks#supported-versions-framework), version 4.7.1 [installer link](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net471-developer-pack-offline-installer)
+
 ## Before running the tests
 To run the tests, you must include the AltTester Unity SDK in the project. To do that, you can choose between the following ways:
 1. Add the AltTester Unity SDK submodule to the project
@@ -12,7 +15,7 @@ To run the tests, you must include the AltTester Unity SDK in the project. To do
 
     <br> 
 2. Download AltTester Unity SDK and import it into Unity 
-    - download the AltTester Unity SDK from the Altom website (https://altom.com/testing-tools/alttester/) or using this link https://altom.com/app/uploads/AltTester/sdks/AltTester.unitypackage;
+    - download the AltTester Unity SDK from the [Altom website: Alttester](https://altom.com/testing-tools/alttester/) or using this [link for unitypackage](https://altom.com/app/uploads/AltTester/sdks/AltTester.unitypackage);
     - import the package into the project (drag-n-drop the package in the Assets folder);
     - a pop-up will appear, select All and click on Import.
     
