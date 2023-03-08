@@ -1,4 +1,6 @@
-This project does not contain a build. In order to run tests need to instrument and build application.
+This project does not contain a build. In order to run tests need to:
+- instrument app (load AlTester Unity SDK as package in Unity Editor)
+- build application with desired target platform (e.g.: Standalone Windows)
 
 ## Pre-requisites
 1. Install the required [.NET Framework Developer Pack](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks#supported-versions-framework), version 4.7.1 [installer link](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net471-developer-pack-offline-installer)
@@ -28,16 +30,16 @@ To run the tests, you must include the AltTester Unity SDK in the project. To do
     
 ## Run the tests
 
-1. Open the project in the Unity Editor (see pre-requisites for which version proved to work).
+1. Open the project in Unity Editor (see pre-requisites for which version proved to work).
 2. Platform > Standalone > Build Target: StandaloneWindows
   * Build Only
 3. Open AltTester Editor from Unity Editor menu (displayed only after imported package as mentioned above) and see tests under `Assembly-CSharp-Editor.dll`
 4. If build completed successfully, should see in folder RollABall *build* folder.
-5. Launch Game from executable under *build*
+5. Launch Game from executable under *build* folder
 6. Select tests under **Tests_AltTester**
   * Run Selected Tests
 
-The tests can be found in Editor->Tests folder in the Tests_AltTester class.
+The tests can be found in *RollABall > Assets > Editor > Tests* folder in the **Tests_AltTester.cs** class.
 
 ## RollABall - CSharp tests
 
