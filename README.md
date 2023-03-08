@@ -1,20 +1,17 @@
-# RollABall - CSharp tests
-
-This project contains C# AltTester tests for a project using the New Input System.
-The tested actions are: 
-- move mouse
-- click
-- begin/move/end touch
-- swipe
-- key down/key up 
-- press key
-- tilt
-- scroll
+This project does not contain a build. In order to run tests need to instrument and build application.
 
 ## Pre-requisites
 1. Install the required [.NET Framework Developer Pack](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks#supported-versions-framework), version 4.7.1 [installer link](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net471-developer-pack-offline-installer)
 2. Install Unity Hub
-3. Install Unity Editor version 2021.3.16f1
+3. Install **Unity Editor version 2021.3.20f1**
+4. Import AltTester Unity SDK in Unity Editor
+  * Assets > Import Package > Custom Package > use the SDK version suggested below in *Before running the tests*
+5. Edit in `RollABall\Packages\manifest.json` version compatible for package `com.unity.render-pipelines.universal: 12.1.10`
+
+### Issue encountered when importing project:
+- Package `com.unity.render-pipelines.universal: 12.1.7` can not be found using Unity Editor 2021.3.19f1
+
+This is why detailed in pre-requisites other versions which seemed compatible.
 
 ## Before running the tests
 To run the tests, you must include the AltTester Unity SDK in the project. To do that, you can choose between the following ways:
@@ -31,6 +28,26 @@ To run the tests, you must include the AltTester Unity SDK in the project. To do
     
 ## Run the tests
 
-You can open the project in the Unity Editor and run the tests from AltTester Editor window.
+1. Open the project in the Unity Editor (see pre-requisites for which version proved to work).
+2. Platform > Standalone > Build Target: StandaloneWindows
+  * Build Only
+3. Open AltTester Editor from Unity Editor menu (displayed only after imported package as mentioned above) and see tests under `Assembly-CSharp-Editor.dll`
+4. If build completed successfully, should see in folder RollABall *build* folder.
+5. Launch Game from executable under *build*
+6. Select tests under **Tests_AltTester**
+  * Run Selected Tests
 
 The tests can be found in Editor->Tests folder in the Tests_AltTester class.
+
+## RollABall - CSharp tests
+
+This project contains C# AltTester tests for a project using the New Input System.
+The tested actions are: 
+- move mouse
+- click
+- begin/move/end touch
+- swipe
+- key down/key up 
+- press key
+- tilt
+- scroll
