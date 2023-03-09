@@ -268,4 +268,15 @@ public class Tests_AltTester
         text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
         Assert.AreEqual("3",text);
     }
+
+    [Test]
+    public void TestResetInput()
+    {
+        altDriver.LoadScene("MiniGame");
+
+        altDriver.KeyDown(AltKeyCode.P, 1);
+        Assert.True(altDriver.FindObject(By.NAME, "AltTesterPrefab").GetComponentProperty<bool>("Altom.AltTester.NewInputSystem", "Keyboard.pKey.isPressed", "Assembly-CSharp"));
+        altDriver.ResetInput();
+        Assert.False(altDriver.FindObject(By.NAME, "AltTesterPrefab").GetComponentProperty<bool>("Altom.AltTester.NewInputSystem", "Keyboard.pKey.isPressed", "Assembly-CSharp"));
+    }
 }

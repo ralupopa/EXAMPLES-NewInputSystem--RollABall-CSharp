@@ -57,3 +57,4 @@ The tested actions are:
 - PressKeys
 - MultipointSwipe
 - Tap
+- ResetInput
