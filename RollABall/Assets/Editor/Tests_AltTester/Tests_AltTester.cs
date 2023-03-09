@@ -230,6 +230,26 @@ public class Tests_AltTester
         Debug.Log("Ball moved to Left Bottom corner");
         newBall = altDriver.FindObject(By.NAME, "Player");
         Assert.AreNotEqual(ball.getWorldPosition().z, newBall.getWorldPosition().z);
+    }
 
+    [Test]
+    public void TestMultipointSwipeScrollbar()
+    {
+        altDriver.LoadScene("MiniGame");
+        var scrollbar = altDriver.WaitForObject(By.NAME, "Handle");
+        AltVector2 scrollbarInitialPosition = new AltVector2(scrollbar.worldX, scrollbar.worldY);
+
+        var pos = new[]
+        {
+            scrollbar.GetScreenPosition(),
+            new AltVector2(scrollbar.x, scrollbar.y - 100),
+            new AltVector2(scrollbar.x, scrollbar.y - 200),
+        };
+
+        altDriver.MultipointSwipe(pos, 3);
+        
+        scrollbar = altDriver.WaitForObject(By.NAME, "Handle");
+        AltVector2 scrollbarFinalPosition = new AltVector2(scrollbar.worldX, scrollbar.worldY);
+        Assert.AreNotEqual(scrollbarInitialPosition.y, scrollbarFinalPosition.y);
     }
 }

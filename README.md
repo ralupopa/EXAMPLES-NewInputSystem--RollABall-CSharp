@@ -55,3 +55,4 @@ The tested actions are:
 - Scroll
 - HoldButton
 - PressKeys
+- MultipointSwipe
