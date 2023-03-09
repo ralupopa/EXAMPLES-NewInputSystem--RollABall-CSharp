@@ -252,4 +252,20 @@ public class Tests_AltTester
         AltVector2 scrollbarFinalPosition = new AltVector2(scrollbar.worldX, scrollbar.worldY);
         Assert.AreNotEqual(scrollbarInitialPosition.y, scrollbarFinalPosition.y);
     }
+
+    [Test]
+    public void TestTapOnSpecialButton()
+    {
+        altDriver.LoadScene("MiniGame");
+
+        var button = altDriver.FindObject(By.NAME, "SpecialButton");
+        altDriver.Tap(button.GetScreenPosition(), 1);
+        Thread.Sleep(1000);
+        var text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
+        Assert.AreEqual("1",text);
+
+        altDriver.Tap(button.GetScreenPosition(), 2);
+        text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
+        Assert.AreEqual("3",text);
+    }
 }

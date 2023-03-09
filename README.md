@@ -56,3 +56,4 @@ The tested actions are:
 - HoldButton
 - PressKeys
 - MultipointSwipe
+- Tap
