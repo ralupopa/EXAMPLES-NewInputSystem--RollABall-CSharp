@@ -1,5 +1,5 @@
 This project does not contain a build. In order to run tests need to:
-- instrument app (load AlTester Unity SDK as package in Unity Editor)
+- instrument app (load AltTester Unity SDK as package in Unity Editor)
 - build application with desired target platform (e.g.: Standalone Windows)
 
 ## Pre-requisites
@@ -35,21 +35,23 @@ To run the tests, you must include the AltTester Unity SDK in the project. To do
   * Build Only
 3. Open AltTester Editor from Unity Editor menu (displayed only after imported package as mentioned above) and see tests under `Assembly-CSharp-Editor.dll`
 4. If build completed successfully, should see in folder RollABall *build* folder.
-5. Launch Game from executable under *build* folder
+5. Launch Game from executable inside *build* folder
 6. Select tests under **Tests_AltTester**
   * Run Selected Tests
 
-The tests can be found in *RollABall > Assets > Editor > Tests* folder in the **Tests_AltTester.cs** class.
+The tests can be found in *RollABall > Assets > Editor > Tests_AltTester* folder in the **Tests_AltTester.cs** class.
 
 ## RollABall - CSharp tests
 
-This project contains C# AltTester tests for a project using the New Input System.
+This project contains C# AltTester tests for a project using the [New Input System](https://altom.com/alttester/docs/sdk/pages/commands.html#input-actions).
 The tested actions are: 
-- move mouse
-- click
-- begin/move/end touch
-- swipe
-- key down/key up 
-- press key
-- tilt
-- scroll
+- MoveMouse
+- Click
+- BeginTouch, MoveTouch, EndTouch
+- Swipe
+- KeyDown, KeyUp
+- PressKey
+- Tilt
+- Scroll
+- HoldButton
+- PressKeys

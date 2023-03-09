@@ -141,7 +141,7 @@ public class Tests_AltTester
     }
 
     [Test]
-    public void TestBallMovesOnPressKeys()
+    public void TestBallMovesOnPressKey()
     {
         altDriver.LoadScene("MiniGame");
 
@@ -193,5 +193,43 @@ public class Tests_AltTester
         button.Click();
         var text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
         Assert.AreEqual("2",text);
+    }
+
+    [Test]
+    public void TestHoldButton()
+    {
+        altDriver.LoadScene("MiniGame");
+        var button = altDriver.FindObject(By.NAME, "SpecialButton");
+
+        altDriver.HoldButton(button.GetScreenPosition(), 1);
+        Thread.Sleep(1000);
+        var text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
+        Assert.AreEqual("1",text);
+
+        altDriver.HoldButton(button.GetScreenPosition(), 1);
+        text = altDriver.FindObject(By.PATH,"//ScrollCanvas/SpecialButton/Text (TMP)").GetText();
+        Assert.AreEqual("2",text);
+    }
+
+    [Test]
+    public void TestBallMovesFromCenterToRightTopCornerThenToLeftBottomCornerOnPressKeys()
+    {
+        altDriver.LoadScene("MiniGame");
+        AltKeyCode[] keysWD = { AltKeyCode.W, AltKeyCode.D };
+        AltKeyCode[] keysAS = { AltKeyCode.A, AltKeyCode.S };
+
+        var ball = altDriver.FindObject(By.NAME, "Player");
+        altDriver.PressKeys(keysWD, 1f, 2f);
+        Debug.Log("Ball moved to Right Top corner");
+        var newBall = altDriver.FindObject(By.NAME, "Player");
+        Assert.AreNotEqual(ball.getWorldPosition().z, newBall.getWorldPosition().z);
+        Thread.Sleep(1000);
+
+        ball = altDriver.FindObject(By.NAME, "Player");
+        altDriver.PressKeys(keysAS, 1f, 2f);
+        Debug.Log("Ball moved to Left Bottom corner");
+        newBall = altDriver.FindObject(By.NAME, "Player");
+        Assert.AreNotEqual(ball.getWorldPosition().z, newBall.getWorldPosition().z);
+
     }
 }
