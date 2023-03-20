@@ -118,7 +118,6 @@ public class Tests_RollABall
 
     [Test]
     public void TestMoveBallMoveMouseAndMathToCollectAtLeast5Boxes()
-    
     {
         altDriver.LoadScene("MiniGame");
         var ball = altDriver.FindObject(By.NAME, "Player");
@@ -158,7 +157,52 @@ public class Tests_RollABall
         ball = altDriver.FindObject(By.NAME, "Player");
         var finalPosition = ball.GetWorldPosition();
         Assert.AreNotEqual(initialPosition.x, finalPosition.x);
+    }
 
+    [Test]
+    public void TestMoveBallSwipeToCollectWIP()
+    {
+        altDriver.LoadScene("MiniGame");
+        var ball = altDriver.FindObject(By.NAME, "Player");
+        var initialPosition = ball.GetWorldPosition();
+
+        var pickupZero = altDriver.FindObject(By.NAME, "PickUp");
+        altDriver.Swipe(new AltVector2(ball.x, ball.y), new AltVector2(pickupZero.x, pickupZero.y), 5f);
+
+        var countPicked = altDriver.FindObject(By.NAME, "CountText");
+        Debug.Log("Collected "+ countPicked.GetText() );
+        Assert.AreEqual(countPicked.GetText(), "Count: 1");
+
+        var pickupOne = altDriver.FindObject(By.NAME, "PickUp (1)");
+        ball = altDriver.FindObject(By.NAME, "Player");
+        altDriver.Swipe(new AltVector2(ball.x, ball.y), new AltVector2(pickupOne.x, pickupOne.y), 1);
+
+        Thread.Sleep(2000);
+        countPicked = altDriver.FindObject(By.NAME, "CountText");
+        Debug.Log("Collected "+ countPicked.GetText() );
+        Assert.AreEqual(countPicked.GetText(), "Count: 3");
+
+        var pickupTwo = altDriver.FindObject(By.NAME, "PickUp (7)");
+        ball = altDriver.FindObject(By.NAME, "Player");
+        altDriver.Swipe(new AltVector2(ball.x, ball.y), new AltVector2(pickupTwo.x, pickupTwo.y), 5f);
+
+        Thread.Sleep(2000);
+        countPicked = altDriver.FindObject(By.NAME, "CountText");
+        Debug.Log("Collected "+ countPicked.GetText() );
+        Assert.AreEqual(countPicked.GetText(), "Count: 5");
+
+        //Thread.Sleep(2000);
+        var pickupThree = altDriver.FindObject(By.NAME, "PickUp (4)");
+        ball = altDriver.FindObject(By.NAME, "Player");
+        altDriver.Swipe(new AltVector2(ball.x, ball.y), new AltVector2(pickupThree.x, pickupThree.y), 1);
+
+        countPicked = altDriver.FindObject(By.NAME, "CountText");
+        Debug.Log("Collected "+ countPicked.GetText() );
+        //Assert.AreEqual(countPicked.GetText(), "Count: 5");
+
+        ball = altDriver.FindObject(By.NAME, "Player");
+        var finalPosition = ball.GetWorldPosition();
+        Assert.AreNotEqual(initialPosition.x, finalPosition.x);
     }
 
 }
