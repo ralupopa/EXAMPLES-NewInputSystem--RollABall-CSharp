@@ -205,4 +205,41 @@ public class Tests_RollABall
         Assert.AreNotEqual(initialPosition.x, finalPosition.x);
     }
 
+    [Test]
+    public void TestMoveBallMathToCollect()
+    {
+
+        altDriver.LoadScene("MiniGame");
+        var ball = altDriver.FindObject(By.NAME, "Player");
+        var initialPosition = ball.GetWorldPosition();
+
+        var pickupZero = altDriver.FindObject(By.NAME, "PickUp");
+        //var radius = pickupZero.x - ball.x;
+        var radius = pickupZero.GetWorldPosition().x - ball.GetWorldPosition().x;
+        Debug.Log("Radius is "+ radius );
+
+        ball = altDriver.FindObject(By.NAME, "Player");
+
+        for (int angleDegrees = 0; angleDegrees <=360; angleDegrees += 30)
+        {
+            var angleRadians = (angleDegrees / 180) * Mathf.PI;
+            // var X = ball.GetWorldPosition().x + radius * (float)(Mathf.Cos(angleRadians));
+            // var Y = ball.GetWorldPosition().y + radius * (float)(Mathf.Sin(angleRadians));
+
+            // var X = ball.GetWorldPosition().x + radius * (float)Mathf.Cos((Mathf.PI / 180)* angleDegrees);
+            // var Y = ball.GetWorldPosition().y + radius * (float)Mathf.Sin((Mathf.PI / 180)* angleDegrees);
+
+            var X = ball.GetWorldPosition().x + 2 * radius * (float)Mathf.Cos(angleDegrees);
+            var Y = ball.GetWorldPosition().y + 2 * radius * (float)Mathf.Sin(angleDegrees);
+            altDriver.MoveMouse(new AltVector2(X, Y), 2f, true);
+            
+            Thread.Sleep(100);
+            Debug.Log("angleRadians degree is " + angleRadians + " when angleeDegrees is " + angleDegrees);
+            //ball = altDriver.FindObject(By.NAME, "Player");
+        }
+
+        ball = altDriver.FindObject(By.NAME, "Player");
+        var finalPosition = ball.GetWorldPosition();
+        Assert.AreNotEqual(initialPosition.x, finalPosition.x);
+    }
 }
